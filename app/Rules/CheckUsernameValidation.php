@@ -12,11 +12,11 @@ class CheckUsernameValidation implements Rule
      *
      * @return void
      */
-    protected $username;
+    protected $email;
 
-    public function __construct($username)
+    public function __construct($email)
     {
-        $this->username = $username;
+        $this->email = $email;
     }
 
     /**
@@ -28,8 +28,7 @@ class CheckUsernameValidation implements Rule
      */
     public function passes($attribute, $value)
     {
-        $total = User::where('username', '=', $this->username)
-            ->orWhere('email', '=', $this->username)->count();
+        $total = User::where('email', '=', $this->email)->count();
         if ($total > 0) {
             return true;
         } else {
@@ -44,6 +43,6 @@ class CheckUsernameValidation implements Rule
      */
     public function message()
     {
-        return trans('validation.username');
+        return trans('validation.user_email');
     }
 }

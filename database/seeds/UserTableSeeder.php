@@ -16,8 +16,13 @@ class UserTableSeeder extends Seeder
         User::flushEventListeners();
 
         User::create([
+            'first_name' => 'admin',
+            'last_name' => 'h3h3',
             'email' => 'harismiftahulhudha@gmail.com',
-            'username' => 'admin',
+            'phone' => '087855736502',
+            'birthday' => '1995-12-10',
+            'country_id' => 1,
+            'city_id' => 1,
             'level' => User::ADMIN,
             'password' => '$2y$10$fGFU9XlvZjmaM4eqqvCMTOO.Rs.034BG6QJsIqnQR5uKByRG0RY02'
         ]);

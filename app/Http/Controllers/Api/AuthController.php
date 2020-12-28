@@ -14,16 +14,15 @@ class AuthController extends ApiController
 {
     public function login(Request $request) {
         $this->validate($request, [
-            'username' => ['required', 'string', 'min:3', 'max:255', new CheckUsernameValidation($request->username)],
+            'email' => ['required', 'string', 'email', 'min:3', 'max:255', new CheckUsernameValidation($request->email)],
             'password' => ['required', 'string', 'min:6', 'max:255'],
             'login_type' => ['required', 'numeric', 'gte:0', 'lte:1']
         ]);
 
-        $user = User::where('username', '=', $request->username)
-            ->orWhere('email', '=', $request->username)->first();
+        $user = User::where('email', '=', $request->email)->first();
 
         $credentials = [
-            'email' => $user->email,
+            'email' => $request->email,
             'password' => $request->password
         ];
 
@@ -64,7 +63,7 @@ class AuthController extends ApiController
 
         $data = [
             'id' => $user->id,
-            'username' => $user->username,
+            'email' => $user->email,
             'token' => $token,
             'level' => $user->level
         ];
@@ -87,15 +86,25 @@ class AuthController extends ApiController
 
     public function register(Request $request) {
         $this->validate($request, [
-            'username' => ['required', 'string', 'min:3', 'max:255', 'unique:users', 'alpha_dash'],
+            'first_name' => ['required', 'string', 'min:3', 'max:255'],
+            'last_name' => ['required', 'string', 'min:3', 'max:255'],
+            'phone' => ['required', 'string', 'min:3', 'max:255', 'unique:users'],
+            'birthday' => ['required', 'date'],
+            'country_id' => ['required', 'exists:countries,id'],
+            'city_id' => ['required', 'exists:cities,id'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
             'login_type' => ['required', 'numeric', 'gte:0', 'lte:1']
         ]);
 
         User::create([
-            'username' => $request->username,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'birthday' => $request->birthday,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
             'password' => bcrypt($request->password)
         ]);
 
