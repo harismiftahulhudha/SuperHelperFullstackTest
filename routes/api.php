@@ -19,5 +19,10 @@ Route::name('api.')->group(function () {
 
     Route::group(['middleware' => 'jwt.verify'], function () {
         Route::get('logout', 'Api\AuthController@logout')->name('auth.logout');
+
+        Route::get('profile', 'Api\ProfileController@profile')->name('profile');
+        Route::put('profile/update', 'Api\ProfileController@update')->name('profile.update');
+
+        Route::resource('users', 'Api\UserController', ['only' => ['index']]);
     });
 });

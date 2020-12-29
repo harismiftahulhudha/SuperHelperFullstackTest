@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('country_id');
             $table->bigInteger('city_id');
             $table->boolean('level')->default(User::REGULAR);
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

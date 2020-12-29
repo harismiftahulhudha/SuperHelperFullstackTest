@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone', 'birthday', 'country_id', 'city_id', 'level'
+        'first_name', 'last_name', 'email', 'password', 'phone', 'birthday', 'country_id', 'city_id', 'level', 'photo'
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getFormatBirthdateAttribute()
     {
-        return date('d/m/Y', strtotime($this->birthdate));
+        return date('d/m/Y', strtotime($this->birthday));
     }
 
     /**
