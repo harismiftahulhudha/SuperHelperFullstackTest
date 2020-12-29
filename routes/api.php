@@ -28,7 +28,7 @@ Route::name('api.')->group(function () {
         Route::resource('cities', 'Api\CityController', ['except' => ['create', 'edit']]);
 
         Route::group(['middleware' => 'admin'], function () {
-            Route::resource('users', 'Api\UserController', ['only' => ['store', 'update']]);
+            Route::resource('users', 'Api\UserController', ['only' => ['store', 'update', 'destroy']]);
         });
     });
 });
