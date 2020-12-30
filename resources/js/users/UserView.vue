@@ -8,6 +8,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Image</label>
+                            <br>
                             <p v-if="model.photo === null"><strong>No Image</strong></p>
                             <img v-if="model.photo !== null" :src="model.photo" class="img-fluid mt-1" alt="User Image">
                         </div>
