@@ -40,9 +40,9 @@ class User extends Authenticatable implements JWTSubject
 
     ];
 
-    protected $appends = ['format_birthdate'];
+    protected $appends = ['format_birthday'];
 
-    public function getFormatBirthdateAttribute()
+    public function getFormatBirthdayAttribute()
     {
         return date('d/m/Y', strtotime($this->birthday));
     }

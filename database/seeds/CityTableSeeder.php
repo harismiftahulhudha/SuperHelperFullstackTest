@@ -28,15 +28,15 @@ class CityTableSeeder extends Seeder
             'name' => 'Malang'
         ]);
         City::create([
-            'country_id' => 1,
+            'country_id' => 2,
             'name' => 'Anson'
         ]);
         City::create([
-            'country_id' => 1,
+            'country_id' => 2,
             'name' => 'Kallang Way'
         ]);
         City::create([
-            'country_id' => 1,
+            'country_id' => 2,
             'name' => 'Maxwell'
         ]);
     }

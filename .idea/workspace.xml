@@ -20,9 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4c3bc30-40ca-4238-8101-a8a44f501311" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> 752d2f4e552297f5474bcaa39c4ae783dcd81df4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,9 +153,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+>>>>>>> 752d2f4e552297f5474bcaa39c4ae783dcd81df4
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -167,13 +181,19 @@
       <option name="presentableId" value="Default" />
       <updated>1609170859569</updated>
       <workItem from="1609170864112" duration="47000" />
+<<<<<<< HEAD
       <workItem from="1609233068373" duration="3267000" />
+=======
+      <workItem from="1609170918215" duration="5681000" />
+      <workItem from="1609242453377" duration="795000" />
+>>>>>>> 752d2f4e552297f5474bcaa39c4ae783dcd81df4
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -198,5 +218,26 @@
       <screen x="0" y="768" width="1920" height="1080" />
     </state>
     <state x="623" y="1017" width="672" height="678" key="search.everywhere.popup/0.768.1920.1080/213.0.1366.768@0.768.1920.1080" timestamp="1609235570804" />
+=======
+  <component name="WindowStateProjectService">
+    <state x="671" y="27" width="558" height="1013" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609175249683">
+      <screen x="0" y="27" width="1920" height="1013" />
+    </state>
+    <state x="671" y="27" width="558" height="1013" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1920.1013/1920.0.1920.1080@0.27.1920.1013" timestamp="1609175249683" />
+    <state x="2613" y="281" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609243247278">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="693" y="291" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1013/1920.0.1920.1080@0.27.1920.1013" timestamp="1609175779432" />
+    <state x="2613" y="281" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1013/1920.0.1920.1080@1920.0.1920.1080" timestamp="1609243247278" />
+    <state x="678" y="236" width="553" height="602" key="RollbackChangesDialog" timestamp="1609175310518">
+      <screen x="0" y="27" width="1920" height="1013" />
+    </state>
+    <state x="678" y="236" width="553" height="602" key="RollbackChangesDialog/0.27.1920.1013/1920.0.1920.1080@0.27.1920.1013" timestamp="1609175310518" />
+    <state x="2543" y="237" width="672" height="723" key="search.everywhere.popup" timestamp="1609243238349">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="249" width="672" height="678" key="search.everywhere.popup/0.27.1920.1013/1920.0.1920.1080@0.27.1920.1013" timestamp="1609176299048" />
+    <state x="2543" y="237" width="672" height="723" key="search.everywhere.popup/0.27.1920.1013/1920.0.1920.1080@1920.0.1920.1080" timestamp="1609243238349" />
+>>>>>>> 752d2f4e552297f5474bcaa39c4ae783dcd81df4
   </component>
 </project>

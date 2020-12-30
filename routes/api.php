@@ -23,6 +23,12 @@ Route::name('api.')->group(function () {
         Route::get('profile', 'Api\ProfileController@profile')->name('profile');
         Route::put('profile/update', 'Api\ProfileController@update')->name('profile.update');
 
-        Route::resource('users', 'Api\UserController', ['only' => ['index']]);
+        Route::resource('users', 'Api\UserController', ['only' => ['index', 'show']]);
+        Route::resource('countries', 'Api\CountryController', ['except' => ['create', 'edit']]);
+        Route::resource('cities', 'Api\CityController', ['except' => ['create', 'edit']]);
+
+        Route::group(['middleware' => 'admin'], function () {
+            Route::resource('users', 'Api\UserController', ['only' => ['store', 'update', 'destroy']]);
+        });
     });
 });
