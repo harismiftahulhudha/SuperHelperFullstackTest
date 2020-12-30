@@ -18,7 +18,11 @@ class CountryController extends ApiController
         }
 
         $countries = $db->get();
-        return $this->showAll($countries);
+        if (request()->has('noPagination')) {
+            return $this->showData($countries);
+        } else {
+            return $this->showAll($countries);
+        }
     }
 
     public function store(Request $request)

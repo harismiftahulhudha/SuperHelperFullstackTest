@@ -6,6 +6,7 @@ use App\City;
 use App\Country;
 use App\Http\Controllers\ApiController;
 use App\User;
+use App\UserToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -17,21 +18,21 @@ class UserController extends ApiController
         $db = DB::table('users');
         $db->join('countries', 'users.country_id', 'countries.id');
         $db->join('cities', 'users.city_id', 'cities.id');
-        $db->select('users.id', 'users.first_name', 'users.last_name', 'users.email', 'users.phone',
+        $db->select('users.id', 'users.first_name', 'users.last_name', DB::raw('CONCAT(users.first_name, \' \', users.last_name) as fullname'), 'users.email', 'users.phone',
         'users.birthday', DB::raw('DATE_FORMAT(users.birthday, \'%d/%m/%Y\') as format_birthday'), 'users.country_id', 'countries.name as country_name', 'users.city_id', 'cities.name as city_name',
         'users.level', 'users.photo', 'users.created_at', 'users.updated_at');
         if (request()->has('query')) {
             $q = request()->get('query');
-            $db->where('first_name', 'LIKE', '%' . $q . '%')
-                ->orWhere('first_name', 'LIKE', '%' . $q . '%');
+            $db->where('users.first_name', 'LIKE', '%' . $q . '%')
+                ->orWhere('users.last_name', 'LIKE', '%' . $q . '%');
         }
         if (request()->has('country')) {
             $q = request()->get('country');
-            $db->where('country_id', $q);
+            $db->where('users.country_id', $q);
         }
         if (request()->has('city')) {
             $q = request()->get('city');
-            $db->where('city_id', $q);
+            $db->where('users.city_id', $q);
         }
         $users = $db->get();
         return $this->showAll($users);
@@ -55,7 +56,7 @@ class UserController extends ApiController
         $path = null;
         if ($request->hasFile('photo')) {
             $filename = 'user-' . preg_replace("/\s+/", "", strtolower($request->first_name)) . '-' . time() . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = Storage::putFileAs('images', $request->file('photo'), $filename);
+            $path = Storage::disk('public')->putFileAs('images', $request->file('photo'), $filename);
         }
 
         $user = User::create([
@@ -71,6 +72,7 @@ class UserController extends ApiController
             'photo' => $path
         ]);
 
+        $user->full_name = $user->first_name . ' ' . $user->last_name;
         $user->country_name = Country::find($user->country_id)->name;
         $user->city_name = City::find($user->city_id)->name;
         $user->format_birthday = date('d/m/Y', strtotime($user->birthday));
@@ -83,7 +85,7 @@ class UserController extends ApiController
         $db = DB::table('users');
         $db->join('countries', 'users.country_id', 'countries.id');
         $db->join('cities', 'users.city_id', 'cities.id');
-        $db->select('users.id', 'users.first_name', 'users.last_name', 'users.email', 'users.phone',
+        $db->select('users.id', 'users.first_name', 'users.last_name', DB::raw('CONCAT(users.first_name, \' \', users.last_name) as fullname'), 'users.email', 'users.phone',
             'users.birthday', DB::raw('DATE_FORMAT(users.birthday, \'%d/%m/%Y\') as format_birthday'), 'users.country_id', 'countries.name as country_name', 'users.city_id', 'cities.name as city_name',
             'users.level', 'users.photo', 'users.created_at', 'users.updated_at');
         $db->where('users.id', $id);
@@ -116,7 +118,7 @@ class UserController extends ApiController
         $user->country_id = $request->country_id;
         $user->city_id = $request->city_id;
         $user->email = $request->email;
-        $user->is_admin = $request->is_admin;
+        $user->level = $request->is_admin;
 
         if ($request->has('password')) {
             if ($request->password !== '') {
@@ -130,7 +132,7 @@ class UserController extends ApiController
             }
 
             $filename = 'user-' . $user->id . '-' . time() . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = Storage::putFileAs('images', $request->file('photo'), $filename);
+            $path = Storage::disk('public')->putFileAs('images', $request->file('photo'), $filename);
             $user->photo = $path;
         }
 
@@ -141,6 +143,9 @@ class UserController extends ApiController
             $user->photo = null;
         }
 
+        $user->save();
+
+        $user->full_name = $user->first_name . ' ' . $user->last_name;
         $user->country_name = Country::find($user->country_id)->name;
         $user->city_name = City::find($user->city_id)->name;
         $user->format_birthday = date('d/m/Y', strtotime($user->birthday));

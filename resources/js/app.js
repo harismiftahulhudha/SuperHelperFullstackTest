@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('nav-component', require('./components/NavComponent.vue').default)
+Vue.component('root-component', require('./components/RootComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +28,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+Vue.use(Loading)
+
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+Vue.$cookies.config('12h')
+
+import VueToastr2 from 'vue-toastr-2'
+import 'vue-toastr-2/dist/vue-toastr-2.min.css'
+
+window.toastr = require('toastr')
+
+Vue.use(VueToastr2)
+
+export const EventBus = new Vue()
+
+import router from './router'
+import store from './store'
+
 const app = new Vue({
+    router,
+    store,
     el: '#app',
-});
+})

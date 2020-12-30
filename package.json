@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "moment": "^2.24.0",
+        "moment-timezone": "^0.5.28",
         "toastr": "^2.1.4",
         "vue-bootstrap-datetimepicker": "^5.0.1",
         "vue-cookies": "^1.7.0",

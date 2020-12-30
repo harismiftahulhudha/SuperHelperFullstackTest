@@ -21,7 +21,11 @@ class CityController extends ApiController
         }
 
         $cities = $db->get();
-        return $this->showAll($cities);
+        if (request()->has('noPagination')) {
+            return $this->showData($cities);
+        } else {
+            return $this->showAll($cities);
+        }
     }
 
     public function store(Request $request)

@@ -54,7 +54,7 @@ class ProfileController extends ApiController
             }
 
             $filename = 'user-' . $user->id . '-' . time() . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = Storage::putFileAs('images', $request->file('photo'), $filename);
+            $path = Storage::disk('public')->putFileAs('images', $request->file('photo'), $filename);
             $user->photo = $path;
         }
 
