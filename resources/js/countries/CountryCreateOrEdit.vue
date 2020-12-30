@@ -94,7 +94,7 @@
                 this.title = 'Edit'
                 this.getData()
             } else {
-                this.title = 'Tambah'
+                this.title = 'Create'
             }
         }
     }
