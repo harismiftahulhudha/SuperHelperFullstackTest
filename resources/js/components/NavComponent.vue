@@ -5,6 +5,10 @@
                 {{ appName }}
             </a>
 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
@@ -15,6 +19,9 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item" v-bind:class="{ active: url === '/' }" v-if="token === null">
                         <router-link class="nav-link" :to="{name: 'auth.login' }">LOGIN</router-link>
+                    </li>
+                    <li class="nav-item" v-bind:class="{ active: url === '/register' }" v-if="token === null">
+                        <router-link class="nav-link" :to="{name: 'auth.register' }">REGISTER</router-link>
                     </li>
                     <li class="nav-item" v-bind:class="{ active: url === '/users/list' }" v-if="token !== null">
                         <router-link class="nav-link" :to="{name: 'users.list' }">USER</router-link>

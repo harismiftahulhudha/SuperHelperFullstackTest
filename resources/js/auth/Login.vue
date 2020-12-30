@@ -3,17 +3,22 @@
         <div class="container">
             <div class="card shadow-sm col-md-8 offset-md-2 col-sm-12">
                 <div class="p-4">
-                    <h3 class="mb-4 font-gilroy-semi-bold">LOGIN</h3>
+                    <h3 class="mb-4">LOGIN</h3>
                     <form @submit.prevent="login" autocomplete="off">
                         <div class="form-group">
-                            <label for="username" class="font-1">Email</label>
-                            <input type="text" class="form-control font-1" v-model="email" id="username" autocomplete="off">
+                            <label for="username">Email</label>
+                            <input type="text" class="form-control" v-model="email" id="username" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="password" class="font-1">Password</label>
-                            <input type="password" class="form-control font-1" v-model="password" id="password">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" v-model="password" id="password">
                         </div>
-                        <button type="submit" class="btn btn-success font-1">LOGIN</button>
+                        <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+
+                        <div class="form-group mt-2">
+                            <label class="form-check-label">Don't have account ?</label>
+                            <router-link style="color: blue; text-decoration: underline;" :to="{name: 'auth.register' }">Register Here</router-link>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -53,7 +58,7 @@ export default {
             axios.post('/api/login', model)
                 .then((res) => {
                     loader.hide()
-                    this.$toastr.success('Selamat Datang Tuan', process.env.MIX_APP_NAME)
+                    this.$toastr.success('Welcome Sir', process.env.MIX_APP_NAME)
                     this.$store.commit('setToken', res.data.data.token)
                     this.$store.commit('setId', res.data.data.id)
                     this.$store.commit('setEmail', res.data.data.email)

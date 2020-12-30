@@ -17,6 +17,9 @@ Route::name('api.')->group(function () {
     Route::post('login', 'Api\AuthController@login')->name('auth.login');
     Route::post('register', 'Api\AuthController@register')->name('auth.register');
 
+    Route::resource('countries', 'Api\CountryController', ['only' => ['index']]);
+    Route::resource('cities', 'Api\CityController', ['only' => ['index']]);
+
     Route::group(['middleware' => 'jwt.verify'], function () {
         Route::get('logout', 'Api\AuthController@logout')->name('auth.logout');
 
@@ -24,9 +27,6 @@ Route::name('api.')->group(function () {
         Route::put('profile/update', 'Api\ProfileController@update')->name('profile.update');
 
         Route::resource('users', 'Api\UserController', ['only' => ['index', 'show']]);
-
-        Route::resource('countries', 'Api\CountryController', ['only' => ['index']]);
-        Route::resource('cities', 'Api\CityController', ['only' => ['index']]);
 
         Route::group(['middleware' => 'admin'], function () {
             Route::resource('users', 'Api\UserController', ['only' => ['store', 'update', 'destroy']]);

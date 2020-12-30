@@ -32,6 +32,7 @@ const guardAdminAuthenticated = (to, from, next) => {
 }
 
 import Login from './auth/Login'
+import Register from './auth/Register'
 import UserList from './users/UserList'
 import UserView from './users/UserView'
 import UserCreateOrEdit from './users/UserCreateOrEdit'
@@ -43,6 +44,7 @@ import Profile from './profile/Profile'
 
 const routes = [
     {path: '/', name: 'auth.login', component: Login, beforeEnter: guardUserAuthenticated},
+    {path: '/register', name: 'auth.register', component: Register, beforeEnter: guardUserAuthenticated},
     {path: '/users/list', name: 'users.list', component: UserList, beforeEnter: guardAuthenticated},
     {path: '/users/view/:id', name: 'users.view', component: UserView, beforeEnter: guardAuthenticated},
     {path: '/users/createOrEdit', name: 'users.createOrEdit', component: UserCreateOrEdit, beforeEnter: guardAuthenticated},
