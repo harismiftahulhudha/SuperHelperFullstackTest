@@ -13,10 +13,22 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item font-gilroy-bold font-0" v-bind:class="{ active: url === '/' }" v-if="token === null">
+                    <li class="nav-item" v-bind:class="{ active: url === '/' }" v-if="token === null">
                         <router-link class="nav-link" :to="{name: 'auth.login' }">LOGIN</router-link>
                     </li>
-                    <li class="nav-item ont-gilroy-bold font-0" v-if="token !== null">
+                    <li class="nav-item" v-bind:class="{ active: url === '/users/list' }" v-if="token !== null">
+                        <router-link class="nav-link" :to="{name: 'users.list' }">USER</router-link>
+                    </li>
+                    <li class="nav-item" v-bind:class="{ active: url === '/countries/list' }" v-if="token !== null && parseInt(level) === 1">
+                        <router-link class="nav-link" :to="{name: 'countries.list' }">COUNTRY</router-link>
+                    </li>
+                    <li class="nav-item" v-bind:class="{ active: url === '/cities/list' }" v-if="token !== null && parseInt(level) === 1">
+                        <router-link class="nav-link" :to="{name: 'cities.list' }">CITY</router-link>
+                    </li>
+                    <li class="nav-item" v-bind:class="{ active: url === '/profile' }" v-if="token !== null">
+                        <router-link class="nav-link" :to="{name: 'profile' }">EDIT PROFIL</router-link>
+                    </li>
+                    <li class="nav-item" v-if="token !== null">
                         <a class="nav-link" href="#" v-on:click="logout()">LOGOUT</a>
                     </li>
                 </ul>
@@ -127,6 +139,7 @@
             }
             this.onLoggedIn()
             this.onUnAuthorize()
+            this.onCheckMenu()
         }
     }
 </script>

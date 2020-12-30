@@ -51,6 +51,7 @@ class CityController extends ApiController
         $db = DB::table('cities');
         $db->join('countries', 'cities.country_id', '=', 'countries.id')
             ->select('cities.id', 'cities.country_id', 'countries.name as country_name', 'cities.name', 'cities.created_at', 'cities.updated_at');
+        $db->where('cities.id', $id);
         $city = $db->first();
         return $this->showData($city);
     }
